@@ -44,11 +44,12 @@ export const getState = (): State => {
 
 export const getGrid = (state: State): Grid => {
   let grid: Grid = [];
+  const gridSize = 5;
 
-  for (let row = 0; row < 5; row++) {
+  for (let row = 0; row < gridSize; row++) {
     const r: number[] = [];
-    for (let col = 0; col < 5; col++) {
-      r.push(state.x === row && state.y === col ? 1 : 0)
+    for (let col = 0; col < gridSize; col++) {
+      r.push(state.x === col && state.y === row ? 1 : 0)
     }
     grid.push(r);
   }
@@ -56,7 +57,7 @@ export const getGrid = (state: State): Grid => {
   return grid;
 }
 
-const getCharacter = (characterDirection: number): string => {
+export const getCharacter = (characterDirection: number): string => {
   switch (characterDirection) {
     case DIRECTION.NORTH:
       return "^"
